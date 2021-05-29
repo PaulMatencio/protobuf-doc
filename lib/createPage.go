@@ -1,6 +1,7 @@
 package lib
 
-import "protobuf-doc/src/document/documentpb"
+
+import "github.com/paulmatencio/protobuf-doc/src/document/documentpb"
 
 func CreatePage(pn string, metadata string, pagen int, object *[]byte) *documentpb.Page {
 	pe := &documentpb.Page{

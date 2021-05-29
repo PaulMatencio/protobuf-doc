@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"protobuf-doc/src/document/documentpb"
+    "github.com/paulmatencio/protobuf-doc/src/document/documentpb"
 	"github.com/golang/protobuf/proto"
 )
 
