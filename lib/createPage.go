@@ -2,11 +2,12 @@ package lib
 
 import "protobuf-doc/src/document/documentpb"
 
-func CreatePage(pagen int32, metadata string, object []byte) *documentpb.Page {
+func CreatePage(pn string, metadata string, pagen int, object *[]byte) *documentpb.Page {
 	pe := &documentpb.Page{
-		PageNumber: pagen,
+		PageId: pn,
+		PageNumber: int32(pagen),
 		Metadata:   metadata,
-		Object:     object,
+		Object:     *object,
 	}
 	return pe
 }

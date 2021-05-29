@@ -4,14 +4,17 @@ option go_package = "src/document/documentpb";
 import "google/protobuf/timestamp.proto";
 
 message Page {
-    int32 pageNumber = 1 ;
-    string metadata = 2;
-    bytes object= 3;
+    string pageId = 1;
+    int32 pageNumber = 2 ;
+    string metadata = 3; // page metadata
+    bytes object= 4;
 }
 
 message  Document {
-    string metadata = 1;
-    int32  numberOfPages = 3;
-    repeated Page page = 4;
-    google.protobuf.Timestamp last_updated = 5;
+    string docId = 1;
+    int32  numberOfPages = 2;
+    string metadata = 3; // document metadata
+    bytes object = 4;
+    repeated Page page = 5;
+    google.protobuf.Timestamp last_updated = 6;
 }
