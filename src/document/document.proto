@@ -1,0 +1,17 @@
+syntax = "proto3";
+package documentpb;
+option go_package = "src/document/documentpb";
+import "google/protobuf/timestamp.proto";
+
+message Page {
+    int32 pageNumber = 1 ;
+    string metadata = 2;
+    bytes object= 3;
+}
+
+message  Document {
+    string metadata = 1;
+    int32  numberOfPages = 3;
+    repeated Page page = 4;
+    google.protobuf.Timestamp last_updated = 5;
+}
