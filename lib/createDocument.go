@@ -11,7 +11,7 @@ func CreateDocument(pn string, metadata string, pages int, np int, object *[]byt
 		Metadata: metadata,
 		NumberOfPages: int32(np),
 		PageNumber: int32(pages),
-		Object: *object,
+		Object: nil,
 	}
 	return doc
 }
@@ -23,7 +23,7 @@ func CreateDocument1(document *documentpb.Document, pn string, metadata string, 
 		Metadata: metadata,
 		NumberOfPages: int32(np),
 		PageNumber: int32(pages),
-		Object: *object,
+		Object: nil,
 	}
 }
 
