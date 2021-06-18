@@ -15,9 +15,8 @@ func Backup(indir string, outdir string, pn string, np int) {
 
 	doc_meta := "This is the document metadata"
 	object := []byte{}
-	doc := CreateDocument(pn,doc_meta,np,&object)
-
-	doc.NumberOfPages = int32(np)
+	doc := CreateDocument(pn,doc_meta,0, np,&object)
+	// doc.NumberOfPages = int32(np)
 	size := 0
 
 	for i := 1; i <= np; i++ {
