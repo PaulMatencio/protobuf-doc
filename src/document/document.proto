@@ -6,16 +6,17 @@ import "google/protobuf/timestamp.proto";
 message Page {
     string pageId = 1;
     int32 pageNumber = 2 ;
-    string metadata = 3; // page metadata
-    bytes object= 4;
+    int32 size = 3;      // page size
+    string metadata = 4; // page metadata
+    bytes object= 5;
 }
 
 message  Document {
     string docId = 1;
-    int64 size = 2;
-    int32 pageNumber = 3;
+    int64 size = 2;  // document size
+    int32 pageNumber = 3; //  must be 0
     int32  numberOfPages = 4;
-    string s3Meta = 5;
+    string s3Meta = 5;  // s3 user metadata
     string metadata = 6; // document metadata
     bytes object = 7;
     repeated Page page = 9;
