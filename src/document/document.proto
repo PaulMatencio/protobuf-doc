@@ -12,11 +12,12 @@ message Page {
 
 message  Document {
     string docId = 1;
-    int32 pageNumber=2;
-    int32  numberOfPages = 3;
-    string s3Meta = 4;
-    string metadata = 5; // document metadata
-    bytes object = 6;
-    repeated Page page = 7;
-    google.protobuf.Timestamp last_updated = 8;
+    int64 size = 2;
+    int32 pageNumber = 3;
+    int32  numberOfPages = 4;
+    string s3Meta = 5;
+    string metadata = 6; // document metadata
+    bytes object = 7;
+    repeated Page page = 9;
+    google.protobuf.Timestamp last_updated = 10;
 }
