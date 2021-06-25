@@ -12,6 +12,11 @@ message Page {
     bytes object= 6;
 }
 
+message Pdf {
+    bytes pdf = 1 ;
+    string metadata = 2;
+}
+
 message  Document {
     string docId = 1;
     int64 size = 2;  // document size
@@ -20,7 +25,7 @@ message  Document {
     string s3Meta = 5;   //  s3  document user  metadata  ( stored in S3)
     string metadata = 6; // document user metadata ( stored with  the object)
     bytes object = 7;    //  page 0
-    bytes pdf = 8;    // This document contains a pdf
+    Pdf  pdf = 8;
     bool  clip = 9;     // this document has fpClipping ( page 0)
     repeated Page page = 10;
     google.protobuf.Timestamp last_updated = 11;
