@@ -4,6 +4,7 @@ import (
 	"encoding/binary"
 	"io"
 )
+
 //  write msg tofile
 func Write(w io.Writer, msg []byte) error {
 
