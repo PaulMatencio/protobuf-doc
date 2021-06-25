@@ -21,7 +21,7 @@ message  Document {
     string metadata = 6; // document user metadata ( stored with  the object)
     bytes object = 7;    //  page 0
     bytes pdf = 8;    // This document contains a pdf
-    bytes p0 = 9;     // Page 0 of this document
+    bool  clip = 9;     // this document has fpClipping ( page 0)
     repeated Page page = 10;
     google.protobuf.Timestamp last_updated = 11;
 }
