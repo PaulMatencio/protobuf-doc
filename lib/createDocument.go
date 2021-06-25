@@ -12,7 +12,9 @@ func CreateDocument(pn string, metadata string, pages int, np int, object *[]byt
 		NumberOfPages: int32(np),
 		PageNumber: int32(pages),
 		Object: nil,
-		Pdf: nil,
+		Pdf : &documentpb.Pdf{
+			Pdf: nil,
+		},
 	}
 	return doc
 }
@@ -25,7 +27,10 @@ func CreateDocument1(document *documentpb.Document, pn string, metadata string, 
 		NumberOfPages: int32(np),
 		PageNumber: int32(pages),
 		Object: nil,
-		Pdf:nil,
+		Pdf : &documentpb.Pdf{
+			Pdf: nil,
+		},
+
 	}
 }
 
