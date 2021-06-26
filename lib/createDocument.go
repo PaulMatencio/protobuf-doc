@@ -30,7 +30,6 @@ func CreateDocument1(document *documentpb.Document, pn string, metadata string, 
 		Pdf : &documentpb.Pdf{
 			Pdf: nil,
 		},
-
 	}
 }
 
