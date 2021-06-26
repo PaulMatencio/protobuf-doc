@@ -13,8 +13,11 @@ message Page {
 }
 
 message Pdf {
-    bytes pdf = 1 ;
-    string metadata = 2;
+
+    string pdfId = 1;
+    bytes pdf = 2 ;
+    int64 size = 3;
+    string metadata = 4;
 }
 
 message  Document {
