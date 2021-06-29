@@ -4,27 +4,26 @@ option go_package = "src/document/documentpb";
 import "google/protobuf/timestamp.proto";
 
 message Page {
-    string pageId = 1;
-    int32 pageNumber = 2 ;
+    string pageId = 1; //  same as Docid
+    int32 pageNumber = 2 ; //  page number ( 0 for fpClipping
     int32 size = 3;      // page size
     string metadata = 4; // page metadata
-    string contentType = 5;
-    bytes object= 6;
+    string contentType = 5; // content tzpe   Octet-stream by default
+    bytes object= 6;   // the page object ( without its meta data)
 }
 
 message Pdf {
-
-    string pdfId = 1;
-    bytes pdf = 2 ;
-    int64 size = 3;
-    string metadata = 4;
+    string pdfId = 1;  // nameof the pdf
+    bytes pdf = 2 ;  //  pdf object
+    int64 size = 3;  //  pdf size
+    string metadata = 4;  // should be empty for the moment
 }
 
 message  Document {
     string docId = 1;
     int64 size = 2;  // document size
-    int32 pageNumber = 3; //  must be 0
-    int32  numberOfPages = 4;
+    int32 pageNumber = 3; //  must be 0( for the document)
+    int32  numberOfPages = 4;  //include page 0 if it exists but not the pdf
     string s3Meta = 5;   //  s3  document user  metadata  ( stored in S3)
     string metadata = 6; // document user metadata ( stored with  the object)
     bytes object = 7;    //  page 0

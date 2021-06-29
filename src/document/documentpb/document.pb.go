@@ -26,12 +26,12 @@ type Page struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	PageId      string `protobuf:"bytes,1,opt,name=pageId,proto3" json:"pageId,omitempty"`
-	PageNumber  int32  `protobuf:"varint,2,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`
-	Size        int32  `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`        // page size
-	Metadata    string `protobuf:"bytes,4,opt,name=metadata,proto3" json:"metadata,omitempty"` // page metadata
-	ContentType string `protobuf:"bytes,5,opt,name=contentType,proto3" json:"contentType,omitempty"`
-	Object      []byte `protobuf:"bytes,6,opt,name=object,proto3" json:"object,omitempty"`
+	PageId      string `protobuf:"bytes,1,opt,name=pageId,proto3" json:"pageId,omitempty"`           //  same as Docid
+	PageNumber  int32  `protobuf:"varint,2,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`  //  page number ( 0 for fpClipping
+	Size        int32  `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`              // page size
+	Metadata    string `protobuf:"bytes,4,opt,name=metadata,proto3" json:"metadata,omitempty"`       // page metadata
+	ContentType string `protobuf:"bytes,5,opt,name=contentType,proto3" json:"contentType,omitempty"` // content tzpe   Octet-stream by default
+	Object      []byte `protobuf:"bytes,6,opt,name=object,proto3" json:"object,omitempty"`           // the page object ( without its meta data)
 }
 
 func (x *Page) Reset() {
@@ -113,10 +113,10 @@ type Pdf struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	PdfId    string `protobuf:"bytes,1,opt,name=pdfId,proto3" json:"pdfId,omitempty"`
-	Pdf      []byte `protobuf:"bytes,2,opt,name=pdf,proto3" json:"pdf,omitempty"`
-	Size     int64  `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`
-	Metadata string `protobuf:"bytes,4,opt,name=metadata,proto3" json:"metadata,omitempty"`
+	PdfId    string `protobuf:"bytes,1,opt,name=pdfId,proto3" json:"pdfId,omitempty"`       // nameof the pdf
+	Pdf      []byte `protobuf:"bytes,2,opt,name=pdf,proto3" json:"pdf,omitempty"`           //  pdf object
+	Size     int64  `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`        //  pdf size
+	Metadata string `protobuf:"bytes,4,opt,name=metadata,proto3" json:"metadata,omitempty"` // should be empty for the moment
 }
 
 func (x *Pdf) Reset() {
@@ -185,12 +185,12 @@ type Document struct {
 	unknownFields protoimpl.UnknownFields
 
 	DocId         string                 `protobuf:"bytes,1,opt,name=docId,proto3" json:"docId,omitempty"`
-	Size          int64                  `protobuf:"varint,2,opt,name=size,proto3" json:"size,omitempty"`             // document size
-	PageNumber    int32                  `protobuf:"varint,3,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"` //  must be 0
-	NumberOfPages int32                  `protobuf:"varint,4,opt,name=numberOfPages,proto3" json:"numberOfPages,omitempty"`
-	S3Meta        string                 `protobuf:"bytes,5,opt,name=s3Meta,proto3" json:"s3Meta,omitempty"`     //  s3  document user  metadata  ( stored in S3)
-	Metadata      string                 `protobuf:"bytes,6,opt,name=metadata,proto3" json:"metadata,omitempty"` // document user metadata ( stored with  the object)
-	Object        []byte                 `protobuf:"bytes,7,opt,name=object,proto3" json:"object,omitempty"`     //  page 0
+	Size          int64                  `protobuf:"varint,2,opt,name=size,proto3" json:"size,omitempty"`                   // document size
+	PageNumber    int32                  `protobuf:"varint,3,opt,name=pageNumber,proto3" json:"pageNumber,omitempty"`       //  must be 0( for the document)
+	NumberOfPages int32                  `protobuf:"varint,4,opt,name=numberOfPages,proto3" json:"numberOfPages,omitempty"` //include page 0 if it exists but not the pdf
+	S3Meta        string                 `protobuf:"bytes,5,opt,name=s3Meta,proto3" json:"s3Meta,omitempty"`                //  s3  document user  metadata  ( stored in S3)
+	Metadata      string                 `protobuf:"bytes,6,opt,name=metadata,proto3" json:"metadata,omitempty"`            // document user metadata ( stored with  the object)
+	Object        []byte                 `protobuf:"bytes,7,opt,name=object,proto3" json:"object,omitempty"`                //  page 0
 	Pdf           *Pdf                   `protobuf:"bytes,8,opt,name=pdf,proto3" json:"pdf,omitempty"`
 	Clip          bool                   `protobuf:"varint,9,opt,name=clip,proto3" json:"clip,omitempty"` // this document has fpClipping ( page 0)
 	Page          []*Page                `protobuf:"bytes,10,rep,name=page,proto3" json:"page,omitempty"`
