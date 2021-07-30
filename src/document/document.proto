@@ -25,10 +25,11 @@ message  Document {
     int32 pageNumber = 3; //  must be 0( for the document)
     int32  numberOfPages = 4;  //include page 0 if it exists but not the pdf
     string s3Meta = 5;   //  s3  document user  metadata  ( stored in S3)
-    string metadata = 6; // document user metadata ( stored with  the object)
-    bytes object = 7;    //  page 0
-    Pdf  pdf = 8;
-    bool  clip = 9;     // this document has fpClipping ( page 0)
-    repeated Page page = 10;
-    google.protobuf.Timestamp last_updated = 11;
+    string versionId =6;
+    string metadata = 7; // document user metadata ( stored with  the object)
+    bytes object = 8;    //  page 0
+    Pdf  pdf = 9;
+    bool  clip = 10;     // this document has fpClipping ( page 0)
+    repeated Page page = 11;
+    google.protobuf.Timestamp last_updated = 12;
 }
